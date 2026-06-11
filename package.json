@@ -1,0 +1,37 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This is React Learning Module - May 2026",
+  "keywords": [
+    "react",
+    "javascript",
+    "app",
+    "building"
+  ],
+  "homepage": "https://github.com/bhavya-innovates/react-learning#readme",
+  "bugs": {
+    "url": "https://github.com/bhavya-innovates/react-learning/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavya-innovates/react-learning.git"
+  },
+  "license": "ISC",
+  "author": "Bhavya Kumari",
+  "type": "commonjs",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "browserslist": [
+    "last 3 versions"
+  ]
+}
