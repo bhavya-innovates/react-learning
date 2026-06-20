@@ -1,4 +1,4 @@
-#Parcel
+# Parcel - Bundler
 
 - Dev Build
 - Local Server
@@ -28,9 +28,9 @@
 - npx parcel build index.html
 - after adding script in package.json - npm run build/ npm build
 
-# Dist folder contain build files
+- Dist folder contain build files
 
-# WHy is React faster
+# Why is React faster
 
 - Virtual DOM (diffing and reconciliation)
 - Bundlers (Vite, Parcel, Webpack)
@@ -64,3 +64,8 @@
   - Named export and import
     - export const varName;
     - import { varName } from 'path';
+
+# Two types of Routing in web apps
+
+- Client side routing
+- Server side routing

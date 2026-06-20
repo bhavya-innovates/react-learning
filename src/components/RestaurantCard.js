@@ -1,18 +1,29 @@
 import { CDN_URL } from "../utils/constants";
+import { Link } from "react-router";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
 
-  const { name, cuisines, avgRating, totalRatingsString, sla, costForTwo } =
-    resData.info; //this is destructuring (ES6 feature) to avoid writing resData.info.name, resData.info.cuisines etc.
+  const {
+    cloudinaryImageId,
+    name,
+    cuisines,
+    avgRating,
+    totalRatingsString,
+    sla,
+    costForTwo,
+  } = resData?.info; //this is destructuring (ES6 feature) to avoid writing resData.info.name, resData.info.cuisines etc.
+
   return (
     <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
       <img
         className="res-logo"
-        src={CDN_URL + resData.info.cloudinaryImageId}
+        src={CDN_URL + cloudinaryImageId}
         alt="res-logo"
       />
-      <h3 className="res-name"> {name} </h3>
+      <Link to={"/restaurant/" + resData?.info?.id}>
+        <h3 className="res-name"> {name} </h3>
+      </Link>
       <h4 className="res-cuisine">{cuisines.join(", ")}</h4>
       <div>
         <h4 className="res-rating">

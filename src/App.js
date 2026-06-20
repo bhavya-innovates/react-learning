@@ -2,43 +2,49 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
+import AboutUs from "./components/AboutUs";
+import Contact from "./components/Contact";
+import Error from "./components/Error";
+import RestaurantMenu from "./components/RestaurantMenu";
 import { CDN_URL } from "./utils/constants";
-
-//React - Create Element => Obeject => HTML Element (render)
-
-const RestaurantCard = (props) => {
-  const { resData } = props;
-
-  const { name, cuisines, avgRating, totalRatingsString, sla, costForTwo } =
-    resData.info; //this is destructuring (ES6 feature) to avoid writing resData.info.name, resData.info.cuisines etc.
-  return (
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img
-        className="res-logo"
-        src={CDN_URL + resData.info.cloudinaryImageId}
-        alt="res-logo"
-      />
-      <h3 className="res-name"> {name} </h3>
-      <h4 className="res-cuisine">{cuisines.join(", ")}</h4>
-      <div>
-        <h4 className="res-rating">
-          {avgRating}⭐ {totalRatingsString} ratings
-        </h4>
-        <h4 className="res-delivery-time"> {sla.slaString} </h4>
-        <span className="res-cost-for-two"> {costForTwo} </span>
-      </div>
-    </div>
-  );
-};
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router";
 
 const AppLayout = () => {
   return (
     <div className="app">
       <Header />
-      <Body />
+      <Outlet />
     </div>
   );
 };
 
+const appRouter = createBrowserRouter([
+  {
+    path: "",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+      {
+        path: "/restaurant/:resId",
+        element: <RestaurantMenu />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
+
+//children is used here to that header stays static on all route navigations
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout />);
+root.render(<RouterProvider router={appRouter} />);
